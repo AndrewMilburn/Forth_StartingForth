@@ -47,9 +47,12 @@
 	loop ;
 
 : ** ( base power -- exponential )
-	over swap 1
-	do over *
-	loop swap drop ;
+	over swap 1-
+	if
+		do over *
+		loop swap drop
+	else
+;
 
 
 
