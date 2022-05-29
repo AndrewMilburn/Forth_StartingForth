@@ -47,12 +47,27 @@
 	loop ;
 
 : ** ( base power -- exponential )
-	over swap 1-
-	if
+	over swap .s 1- dup .s
+	if 1+ 1
+		do over *
+		loop
+	else drop
+	then swap drop ;
+
+: **bookanswer
+	1- ?dup
+	if over rot rot 0
 		do over *
 		loop swap drop
-	else
-;
+	then ;
+
+
+
+
+
+
+
+
 
 
 
