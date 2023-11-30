@@ -74,11 +74,106 @@ cr
 : 2B5 ( a a -- result )
 	2 * 3 + * ;
 
-: 2B6 ( c b a -- result )
+\ : 2B6 ( c b a -- result )
 \ -  ?????????
 
 \ 22 4 / . 5  ok
 \ p61
+
+\ 22 4 /mod . 5  ok.
+\ . 2  ok
+
+: QUARTERS   ( x1 x2 -- q r )
+	4 /mod ." is " . ." Whole Units and " . ." quarters" ;
+\ 22 quarters is 5 Whole Units and 2 quarters ok
+
+\ 22 4 mod . 2  ok
+
+\ 1 2 .s [2] 1 2  ok..
+\   ok..
+\ swap . . 1 2  ok
+
+: 2B6 ( c a b -- result )
+	- swap / ;
+\ 2 10 4 2b6 . 3  ok
+
+\ 4 dup * . 16  ok
+
+\ 4 2 over + * . 24  ok
+
+\ 1 2 3 rot - * . 4  ok
+
+\ 1 drop . 0
+\        ^
+\ Error(-4): . stack underflow
+
+\ .s  empty  ok
+\ 1 2 3 .s [3] 1 2 3  ok...
+\ rot .s [3] 2 3 1  ok...
+\ Note - This is slightly different than the book, where his
+\ .s gives 0 for an empty stack, and 0 as the first number when
+\ .s-ing. Which kinda makes it look like there's 4 numbers on the stack
+
+: 2C1   ( abc -- cba)
+	swap rot ;
+\ 1 2 3 2c1 .s [3] 3 2 1  ok...
+
+: MY_OVER   ( abc -- abcb)
+	swap dup rot swap ;
+\ 4 5 6 my_over .s [4] 4 5 6 5  ok....
+
+: <ROT   ( abc -- cab)
+	rot rot ;
+\ 1 2 3 <rot .s [3] 3 1 2  ok...
+
+: 2C4   ( n -- result)
+	dup 1 + swap / ;
+\ 5 2c4 .s [1] 1  ok.
+\ xx
+\ ^^
+\ Error(-13): XX is undefined
+\ 1 2c4 .s [1] 2  ok.
+
+: 2C5   ( x -- result)
+	dup 7 * 5 + * ;
+\ 3 2c5 .s [1] 78  ok.
+
+: 2C6   ( a b -- result)
+	over 9 * Swap - * ;
+(( 2 2c6 .s [1] 54600  ok.
+\ 2 over 9 * swap - * .s  empty  ok
+\ 2 over .s [2] 2 -109310496  ok..
+\ So OVER doesn't throw an underflow when it really should
+\ 2 3 2c6 .s [1] 30  ok.
+\ : e 2 . ; ))
+
+(( Power function only works on F.P Numbers
+\ f.s Empty fp stack  ok
+\ f# 2 4  ok.
+\ f.s {1} 2.00000  ok.
+\ 4.  ok...
+\ f.s {1} 2.00000  ok...
+\ f# 4  ok...
+\ f.s {2} 2.00000 4.00000  ok...
+ \ f**  ok...
+\ f.s {1} 16.0000  ok... ))
+( All done just so I could get the value of 2^32 )
+
+\ 1 2 3 4 2swap .s [4] 3 4 1 2  ok....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
