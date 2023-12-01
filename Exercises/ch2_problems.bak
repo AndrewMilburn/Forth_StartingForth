@@ -19,9 +19,9 @@ cr
 \ 4.
 : ex2.4   ( c a b -- result )
 	over * swap dup * + + ;
-\ 5 2 3 ex2.4 .s [1] 15  ok.
+(( 5 2 3 ex2.4 .s [1] 15  ok.
 \ His Answer: over + * + Slightly shorter
-\ (factorised first to a(a + b) + c
+\ is factorised first to a(a + b) + c ))
 
 \ 5.
 : ex2.5   ( a b -- result )
@@ -30,9 +30,18 @@ cr
 
 \ 6.
 : CONVICTED-OF   0 ;
-: ARSON 10 + ;
-: HOMICIDE 20 + ;
-: BOOKMAKING 2 + ;
-: TAX-EVASION 5 + ;
-: WILL-SERVE . ."  Years" ;
+: ARSON   10 + ;
+: HOMICIDE   20 + ;
+: BOOKMAKING   2 + ;
+: TAX-EVASION   5 + ;
+: WILL-SERVE   . ."  Years" ;
+\ convicted-of arson homicide tax-evasion  ok.
+\ will-serve 35  Years ok
 
+\ 7.
+: EGG.CARTONS    ( e -- )
+	12 /mod cr ." Number of Cartons needed = " . cr
+	." There will be " . ." Eggs left over." ;
+\ 17 egg.cartons
+\ Number of Cartons needed = 1
+\ There will be 5 Eggs left over. ok
