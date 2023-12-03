@@ -56,6 +56,24 @@ cr
 \ 40 egg-size Error ok..
 
 \ p113
+\ 5 4 > . -1  ok
+\ 5 4 < . 0  ok
+
+\ 5 3 > not . 0  ok
+\ 5 3 < not . -1  ok
+
+: TEST   if    ." Non-"  then ." Zero" ;
+\ 1 test Non-Zero ok
+\ 0 test Zero ok
+\ 422 test Non-Zero ok
+\ -312 test Non-Zero ok
+
+: /CHECK2 ( num denom -- )
+     dup
+     if   /
+     else ." Invalid " drop
+     then ;
+
 
 
 

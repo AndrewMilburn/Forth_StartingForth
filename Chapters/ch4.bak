@@ -55,6 +55,15 @@ cr
 \ 29 egg-size Extra Large ok..
 \ 40 egg-size Error ok..
 
+\ p113
+\ 5 4 > . -1  ok
+\ 5 4 < . 0  ok
+
+\ 5 3 > not . 0  ok
+\ 5 3 < not . -1  ok
+
+: TEST   if    ." Non-"  then ." Zero" ;
+
 
 
 
