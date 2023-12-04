@@ -73,7 +73,45 @@ cr
      if   /
      else ." Invalid " drop
      then ;
+\ 112 0 /check Invalid ok.
+\ 112 2 /check  ok..
+\ .s [2] 112 56  ok..
 
+\ 10 mod 0= gives divisible by 10'
+\ 10 mod if will flag on 1's digit
+
+\ - can also test whether two numbers are (not)equal
+
+\ p116
+
+: VEGETABLE   ( n -- FLAG ) ( True if n -ve or divisible by 10 )
+     dup 0< swap 10 mod 0= +
+     if   ." Artichoke (TRUE)
+     else ." Melon (FALSE)
+     then ;
+\ 25 vegetable Melon (FALSE) ok
+\ 40 vegetable Artichoke (TRUE) ok
+\ -25 vegetable Artichoke (TRUE) ok
+\ -30 vegetable Artichoke (TRUE) ok
+
+: ?DAY2   ( day -- )
+     dup 1 < swap 31 > +
+     if   ." Sus "
+     else ." OK "
+     then ;
+\ 0 ?day2 Sus  ok..
+\ 32 ?day2 Sus  ok..
+\ 31 ?day2 OK  ok..
+\ Notice the logic is opposite of the original - now we fail positively
+
+: BOXTEST   ( length width height -- )
+     6 > rot 22 > rot 19 > and and
+     if   ." Big enough"
+     else ." Gonna need a bigger box"
+     then ;
+\ 23 30 7 boxtest Big enough ok
+\ 1 1 1 boxtest Gonna need a bigger box ok
+\ 23 30 6 boxtest Gonna need a bigger box ok
 
 
 

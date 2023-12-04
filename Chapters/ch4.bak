@@ -63,7 +63,52 @@ cr
 \ 5 3 < not . -1  ok
 
 : TEST   if    ." Non-"  then ." Zero" ;
+\ 1 test Non-Zero ok
+\ 0 test Zero ok
+\ 422 test Non-Zero ok
+\ -312 test Non-Zero ok
 
+: /CHECK2 ( num denom -- )
+     dup
+     if   /
+     else ." Invalid " drop
+     then ;
+\ 112 0 /check Invalid ok.
+\ 112 2 /check  ok..
+\ .s [2] 112 56  ok..
+
+\ 10 mod 0= gives divisible by 10'
+\ 10 mod if will flag on 1's digit
+
+\ - can also test whether two numbers are (not)equal
+
+\ p116
+
+: VEGETABLE   ( n -- FLAG ) ( True if n -ve or divisible by 10 )
+     dup 0< swap 10 mod 0= +
+     if   ." Artichoke (TRUE)
+     else ." Melon (FALSE)
+     then ;
+\ 25 vegetable Melon (FALSE) ok
+\ 40 vegetable Artichoke (TRUE) ok
+\ -25 vegetable Artichoke (TRUE) ok
+\ -30 vegetable Artichoke (TRUE) ok
+
+: ?DAY2   ( day -- )
+     dup 1 < swap 31 > +
+     if   ." Sus "
+     else ." OK "
+     then ;
+\ 0 ?day2 Sus  ok..
+\ 32 ?day2 Sus  ok..
+\ 31 ?day2 OK  ok..
+\ Notice the logic is opposite of the original - now we fail positively
+
+: BOXTEST   ( length width height -- )
+     6 > rot 22 > rot 19 > and and
+     if   ." Big enough"
+     else ." Gonna need a bigger box"
+     then ;
 
 
 
