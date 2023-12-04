@@ -1,3 +1,4 @@
+
 cls
 empty
 cr
@@ -113,8 +114,27 @@ cr
 \ 1 1 1 boxtest Gonna need a bigger box ok
 \ 23 30 6 boxtest Gonna need a bigger box ok
 
+: /CHECK3   ( n n -- result )
+     ?DUP
+     if   / .
+     else ." Not Possible"
+     then ;
+\ 23 7 /check3 3  ok
+\ 23 0 /check3 Not Possible ok.
+\ So close - I would correct it, but we're changing it anyway
 
+: /CHECK4   ( a b -- a/b )
+     dup 0= abort" zero denominator" /  ;
+\ 23 7 /check4 . 3  ok
+\ 23 0 /check4 .
+\      ^^^^^^^
+\ Error(-2): /CHECK4 zero denominator
 
+: ENVELOPE   /check4 ." The answer is " . ;
+\ 8 4 envelope The answer is 2  ok
+\ 8 0 envelope
+\     ^^^^^^^^
+\ Error(-2): ENVELOPE zero denominator
 
 
 
