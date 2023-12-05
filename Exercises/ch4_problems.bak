@@ -50,12 +50,59 @@ cr
 \ 7.
 : GUESS   ( ans guess -- ans or - )
      2dup =
-     if   ." Correct" drop
-     else <
-          if   ." Less than"
-          else ." Too Much"
+     if   ." Correct" 2drop
+     else over <
+          if   ." Too Low"
+          else ." Too High"
           then
+     then ;
+\ 50  ok.
+\ 49 guess Too Low ok.
+\ .s [1] 50  ok.
+\ 34 guess Too Low ok.
+\ 60 guess Too High ok.
+\ 55 guess Too High ok.
+\ 50 guess Correct ok
+
+\ 8.
+: SPELLER ( n -- )
+     dup abs 4 >
+     if   ." Out of Range"
+     else dup 0<
+          if   ." Negative " abs
+          then dup 0=
+               if   ." Zero"
+               else dup 1 =
+                    if   ." One"
+                    else dup 2 =
+                         if   ." Two"
+                         else dup 3 =
+                              if ." Three"
+                              else ." Four"
+                              then
+                         then
+                    then
+               then
      then drop ;
+\ 9 speller Out of Range ok
+\ -4 speller Negative Four ok
+\ 2 speller Two ok
+\ 0 speller Zero ok
+
+\ 9.
+: TRAP   ( ans lo hi -- ans or _ )
+     3dup -rot over = -rot = and
+     if   ." You Got It" 3drop
+     else 3dup swap 1 + swap within
+          if   ." Between"
+          else ." Not Between"
+          then 2drop
+     then ;
+
+
+
+
+
 
 
 
