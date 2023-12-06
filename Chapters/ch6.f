@@ -1,7 +1,8 @@
 ( Chapter 6 )
-cls
+page
 empty
 cr
+quit
 
 : TEST
      10 0
@@ -71,10 +72,24 @@ cr
      do   i . dup
      +loop drop ;
 
-\ p152
+: DOUBLING
+     32767 1
+     do   i . i
+     +loop ;
 
+: TEST2
+     10 10
+     do i . -1
+     +loop ;
 
-
+: DOUBLED
+     6 1000 21 1
+     do   cr ." Year " i 2 u.r 2dup r% + dup ."   Balance " .
+          dup 2000 >
+          if   cr cr ." More than doubled in "
+               i . ." Years " leave
+          then
+     loop 2drop ;
 
 
 

@@ -1,65 +1,35 @@
-( Chapter 6 Exercises )
+( Chapter 6 Exercises ) page empty cr
 
-: Stars   ( n -- )
-	0
-	do 42 emit
-	loop ;
+: STARS   ( n -- )
+     cr 0
+     do   42 emit
+     loop ;
 
-: Box	( width height -- )
-	0
-	do cr dup stars
-	loop cr drop ;
+: BOX   ( width height -- )
 
-: \Stars ( height -- )
-	0
-	do cr i spaces 10 stars
-	loop cr ;
+\ ex 2
 
-: /Stars ( height -- )
-	1 - 0 swap
-	do cr i spaces 10 stars
-	-1 +loop cr ;
 
-: /stars2 ( height -- )
-	begin cr dup spaces 10 stars 1- dup 0=
-	until drop ;
 
-: Starline ( number position  -- )
-	cr spaces 0
-	do ." *"
-	loop ;
 
-: TriangleUp ( lines -- lines )
-	dup 0
-	do  i 2 * 1+
-		over i - starline
-	loop ;
 
-: TriangleDown ( lines -- lines )
-	dup 1- 0 swap
-	do  i 2 * 1+
-		over i - starline
-	-1 +loop ;
 
-: Diamonds ( size number -- )
-	0
-	do triangleup triangledown
-	loop ;
 
-: ** ( base power -- exponential )
-	over swap .s 1- dup .s
-	if 1+ 1
-		do over *
-		loop
-	else drop
-	then swap drop ;
 
-: **bookanswer
-	1- ?dup
-	if over rot rot 0
-		do over *
-		loop swap drop
-	then ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
