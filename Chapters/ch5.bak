@@ -17,8 +17,27 @@ cr
 
 : QUADRATIC   ( a b c x -- n )
      >r swap rot r@ * + r> * + ;
+\ 2 7 9 3 quadratic . 48  ok
 
+\ p134
+\ 225 32 100 */ . 72  ok
 
+: %   ( n -- n )
+     100 */ ;
+\ 225 32 % . 72  ok
+
+: R%   ( n -- n )
+     10 */ 5 + 10 / ;
+\ 227 32 R% . 73  ok
+
+\ 171 2 3 */ . 114  ok
+
+: AREA   ( rad -- area )
+     dup * 31416 10000 */ ;
+\ 10 area . 314  ok
+
+: AREA2   ( rad -- area )
+     dup * 355 113 */ ;
 
 
 

@@ -1,75 +1,99 @@
 ( Chapter 6 )
+cls
+empty
+cr
 
-: Test	10 0 do cr ." Hello " loop ;
+: TEST
+     10 0
+     do   cr ." Hello "
+     loop ;
 
-: Decade   10 0 do i . loop ;
+: DECADE
+     10 0
+     do   i .
+     loop ;
 
-: Multiplications   cr 11 1 do dup i * . loop drop ;
+: SAMPLE
+     -243 -250
+     do   i .
+     loop ;
 
-: R%   ( n1 n2 -- n3; n3 = n1% of n2)
-	10 */ 5 + 10 / ;
+: MULTIPLICATIONS   ( n -- )
+     cr 11 1
+     do   dup i * .
+     loop drop ;
 
-: Compound	( amt int -- int% of amt over 20 years compound )
-	swap 21 1
-	do ." Year " i . 3 spaces
-		2dup r% + dup ." Balance " . cr
-	loop 2drop ;
+: R%   ( n -- n )
+     10 */ 5 + 10 / ;
 
-: Oblong page 256 0
-	do i 16 mod 0=
-		if cr
-		then ." *"
-	loop quit ;
+: COMPOUND   ( amt int -- )
+     swap 21 1
+     do   ." Year " i . 3 spaces 2dup r% + dup ." Balance " . cr
+     loop 2drop ;
 
-: Poem
-	cr 11 1
-	do i . ." Little " i 3 mod 0=
-		if ." Indians " cr
-		then
-	loop ." Indian Boys. " ;
+: M_RECTANGLE
+     256 0
+     do   i 16 mod 0=
+          if cr
+          then ." *"
+     loop ;
 
-: Table cr 11 1 do i multiplications loop ;
+: POEM
+     cr 11 1
+     do   i . ." Little " i 3 mod 0=
+          if   ." Indians " cr
+          then
+     loop ." Indian boys" ;
 
-: Tables cr 11 1
-	do 11 1
-		do i j * 5 u.r
-		loop cr
-	loop ;
+: TABLE
+     cr 11 1
+     do   i multiplications
+     loop ;
 
-: Pentajumps   50 0
-	do i . 5
-	+loop ;
+: TABLE2
+     cr 11 1
+     do   11 1
+          do   i j * 5 u.r
+          loop cr
+     loop ;
 
-: Falling   -10 0
-	do i . -1
-	+loop ;
+: PENTAJUMPS
+     50 0
+     do   i . 5
+     +loop ;
 
-: Inc-Count   ( inc limit start -- )
-	do i . dup
-	+loop drop ;
+: FALLING
+     -10 0
+     do i . -1
+     +loop ;
 
-: doubling   32767 1
-	do i . i
-	+loop ;
+: INC-COUNT ( step limit start -- )
+     do   i . dup
+     +loop drop ;
 
-: Doubleit \ amt int -- ; prints annual amount at
-		   \ int % interest for 20 years, or initial amount
-		   \ doubled
-	swap 21 1
-	do cr ." Year " i 2 u.r 2dup r% + dup
-		  ."   Balance " 5 u.r dup 2000 >
-		if cr cr ." More than doubled in " i . ." Years "
-		leave
-		then
-	loop 2drop ;
+\ p152
 
-: Doubleit2 \ ( amt int --) ; prints annual amount at
- 		   \ int% compound interest for 20 years or
-		   \  stops sooner if amount doubled
-	over 21 1
-	do cr ." Year " i 2 u.r 2dup r% + dup
-		  ."   Balance " 5 u.r dup 3 pick 2 * >
- 		if cr cr ." More than doubled in " i . ." Years "
-	leave
-		then
- 	loop  3drop ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
