@@ -2,7 +2,6 @@
 page
 empty
 cr
-quit
 
 : TEST
      10 0

@@ -1,21 +1,60 @@
-: Printables   127 32 do i emit space loop ;
+( Chapter 7 )
+page
+empty
+cr
 
-: test
-	dup 0<
-	if negate -1
-	else 0
-	then >r
-	s>d <# [char] $ hold # # [char] . hold # # # [char] . hold #S r> sign #>
-	cr type ;
+: PRINTABLES      ( -- )
+      127 32
+      do    i emit space
+      loop  ;
 
-: demo
-	s>d <#   # # [char] . hold # # # [char] , hold
-	#s [char] £ hold #> type ;
+: DEMO      ( n -- )
+      s>d <# # # [char] . hold #s [char] $ hold #> type ;
 
-: .ph#   s>d <# # # # # 45 hold #s #> type space ;
+: DEMO2      ( d -- )
+      <# # # [char] . hold #s [char] $ hold #> type ;
+
+: .PH#      ( n -- )
+      s>d <# # # # # 45 hold #s #> type space ;
+
+hex : .PH#2 ( n -- )
+      s>d <# # # # # 2D hold #s #> type space ;
+decimal
+
+: .PH#3     ( d -- )
+      <# # # # # 45 hold #s #> type space ;
 
 
-: Sextal   6 base ! ;
-: :00   # sextal # decimal 58 hold ;
-: Sec   s>d <# :00 :00 #s #> type space ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
