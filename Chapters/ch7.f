@@ -25,7 +25,26 @@ decimal
       <# # # # # 45 hold #s #> type space ;
 
 
+\ : /DATE     ( n as ddmmyy -- )
+\       s>d <# # # 47 hold # # 47 hold #s #> type space ;
 
+: SEXTAL
+      6 base ! ;
+
+: :00
+      # sextal # decimal 58 hold ; \ Decimal 58 = ":"
+
+: SEC       ( n as secs -- )
+      S>d <# :00 :00 #s #> type space ;
+
+: SLASH
+      # # 47 hold ;
+
+: /DATE
+      s>d <# slash slash #s #> type space ;
+
+: /D.  ( d -- )
+      swap over dabs <# #s sign #> type space ;
 
 
 
