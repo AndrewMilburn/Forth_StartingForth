@@ -1,6 +1,8 @@
 page
 empty
 cr
+needs asm.f
+
 
 VARIABLE DATE VARIABLE MONTH VARIABLE YEAR
 : !DATE     ( y m d -- )
@@ -9,7 +11,7 @@ VARIABLE DATE VARIABLE MONTH VARIABLE YEAR
 : DATE.     ( -- )
       date ? ." / " month ? ." / " year ? ;
 
-variable EGGS
+VARIABLE EGGS
 : RESET     0 eggs ! ;
 
 1 eggs +!
@@ -23,18 +25,22 @@ variable EGGS
       if    ." DANGER - REDUCE HEAT"
       then ;
 
-HEX
-3E27 CONSTANT SHUTTER
-DECIMAL
+\ HEX
+\ 3E27 CONSTANT SHUTTER
+\ DECIMAL
+\
+\ : OPEN      ( n -- )
+\       1 swap ! ." Shutter Open" ;
+\ : CLOSE     ( n -- )
+\       0 swap ! ." Shutter Closed" ;
+\
+\ : PHOTOGRAPH
+\       cr shutter open cr ." Click" cr shutter close ;
+\
 
-: OPEN      ( n -- )
-      1 swap ! ." Shutter Open" ;
-: CLOSE     ( n -- )
-      0 swap ! ." Shutter Closed" ;
-
-: PHOTOGRAPH
-      shutter open cr ." Click" cr shutter close ;
-
+VARIABLE LIMITS 8 allot       \ Gives 8 extra bytes ( 4 extra cells)
+220 limits !
+340 limits 2 + !
 
 
 
